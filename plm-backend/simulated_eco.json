@@ -1,0 +1,61 @@
+{
+  "_id": "69bf407f61c10ba0c4fd7493",
+  "title": "Test React Crash",
+  "ecoType": "PRODUCT",
+  "targetProductId": {
+    "_id": "69be72378f489c73ae3a98d0",
+    "name": "Wooden Table",
+    "status": "ACTIVE",
+    "version": 1
+  },
+  "targetVersion": 1,
+  "versionUpdate": true,
+  "proposedChanges": {
+    "fields": []
+  },
+  "stage": {
+    "_id": "69be5f25ae1fb9d2e1376579",
+    "name": "APPROVAL",
+    "order": 2,
+    "requiresApproval": true,
+    "approvers": []
+  },
+  "stageHistory": [
+    {
+      "stageId": "69be5f25ae1fb9d2e1376578",
+      "stageName": "NEW",
+      "enteredAt": "2026-03-22T01:06:07.839Z",
+      "enteredBy": {
+        "_id": "69be5d80baca25e3603fec12",
+        "name": "Admin User",
+        "email": "admin@plm.com"
+      },
+      "action": "MOVED"
+    },
+    {
+      "stageId": "69be5f25ae1fb9d2e1376579",
+      "stageName": "APPROVAL",
+      "enteredAt": "2026-03-22T01:06:07.882Z",
+      "enteredBy": {
+        "_id": "69be5d80baca25e3603fec12",
+        "name": "Admin User",
+        "email": "admin@plm.com"
+      },
+      "action": "VALIDATED"
+    }
+  ],
+  "status": "IN_PROGRESS",
+  "assignedTo": {
+    "_id": "69be5d80baca25e3603fec19",
+    "name": "Approver User",
+    "email": "approver@plm.com"
+  },
+  "createdBy": {
+    "_id": "69be5d80baca25e3603fec12",
+    "name": "Admin User",
+    "email": "admin@plm.com"
+  },
+  "createdAt": "2026-03-22T01:06:07.847Z",
+  "updatedAt": "2026-03-22T01:06:07.885Z",
+  "__v": 1
+}
