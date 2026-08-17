@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: plm-backend
+    runtime: node
+    rootDir: plm-backend
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false   # Set manually in Render dashboard
+      - key: JWT_ACCESS_SECRET
+        sync: false   # Set manually in Render dashboard
+      - key: JWT_REFRESH_SECRET
+        sync: false   # Set manually in Render dashboard
+      - key: ACCESS_TOKEN_EXPIRY
+        value: 15m
+      - key: REFRESH_TOKEN_EXPIRY
+        value: 7d
+      - key: CLIENT_URL
+        sync: false   # Set to your Vercel frontend URL

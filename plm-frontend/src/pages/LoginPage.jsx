@@ -135,12 +135,7 @@ function LoginPage() {
               </button>
             </div>
 
-            <div className="rounded-md bg-indigo-50 p-3 text-xs text-indigo-900">
-              <p className="font-semibold">Demo credentials</p>
-              <p>ADMIN: admin@plm.com / Admin@1234</p>
-              <p>ENGINEER: engineer@plm.com / Admin@1234</p>
-              <p>APPROVER: approver@plm.com / Admin@1234</p>
-            </div>
+
           </form>
         </div>
       </div>
