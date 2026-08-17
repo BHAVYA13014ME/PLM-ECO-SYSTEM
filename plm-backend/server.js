@@ -86,7 +86,12 @@ const rateLimitHandler = (req, res, _next, options) => {
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: ["'self'"] } }));
 
-// 3a.2 Rate limiting
+// 3b. CORS — MUST be before rate limiters so every response (401, 429, etc.)
+// carries the Access-Control headers the browser requires.
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
+// 3b.2 Rate limiting (after CORS so error responses still have CORS headers)
 const authLimiter = rateLimit({ 
   windowMs: 15 * 60 * 1000, max: 30,
   message: { success: false, message: 'Too many requests, please try again later.', data: null },
@@ -110,10 +115,6 @@ app.use('/api/v1/auth/login', authLimiter);
 app.use('/api/v1/auth/register', authLimiter);
 app.use('/api/v1/auth/refresh-token', refreshLimiter);
 app.use('/api/v1', generalLimiter);
-
-// 3b. CORS — allow frontend origin with credentials
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
 
 // 3c. Parse JSON bodies
 app.use(express.json());

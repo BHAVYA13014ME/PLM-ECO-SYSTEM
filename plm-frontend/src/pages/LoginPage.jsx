@@ -36,8 +36,10 @@ function LoginPage() {
   const onSubmit = async (data) => {
     setApiError('');
     try {
-      const response = await authApi.login(data);
-      const { user, accessToken } = response.data || {};
+      // axiosInstance interceptor returns the backend envelope { success, message, data } directly.
+      // So the actual payload { user, accessToken } lives in envelope.data
+      const envelope = await authApi.login(data);
+      const { user, accessToken } = envelope?.data || {};
       if (!user || !accessToken) {
         throw new Error('Invalid login response format');
       }
@@ -45,7 +47,7 @@ function LoginPage() {
       toast.success('Login successful!');
       navigate('/dashboard', { replace: true });
     } catch (err) {
-      setApiError(err.response?.data?.message || 'Login failed. Please try again.');
+      setApiError(err.response?.data?.message || err.message || 'Login failed. Please try again.');
     }
   };
 
@@ -135,9 +137,9 @@ function LoginPage() {
 
             <div className="rounded-md bg-indigo-50 p-3 text-xs text-indigo-900">
               <p className="font-semibold">Demo credentials</p>
-              <p>ADMIN: admin@plm.com / Demo@1234</p>
-              <p>ENGINEER: engineer@plm.com / Demo@1234</p>
-              <p>APPROVER: approver@plm.com / Demo@1234</p>
+              <p>ADMIN: admin@plm.com / Admin@1234</p>
+              <p>ENGINEER: engineer@plm.com / Admin@1234</p>
+              <p>APPROVER: approver@plm.com / Admin@1234</p>
             </div>
           </form>
         </div>

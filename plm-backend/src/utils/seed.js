@@ -13,6 +13,7 @@ const seedUsers = async () => {
     { name: 'Operations User', email: 'ops@plm.com', role: 'OPERATIONS' },
   ];
 
+  // ⚠️  Must match the "Demo credentials" hint shown on the LoginPage.
   const defaultPassword = 'Admin@1234';
 
   for (const userData of users) {
